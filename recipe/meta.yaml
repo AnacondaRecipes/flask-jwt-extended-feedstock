@@ -20,11 +20,11 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6,<4
     - pip
   run:
-    - flask >=1.0
-    - pyjwt >=1.6.4
+    - flask >=1.0,<2.0
+    - pyjwt >=2.0,<3.0
     - python
     - six
     - werkzeug >=0.14
