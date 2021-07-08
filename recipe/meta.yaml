@@ -22,16 +22,22 @@ requirements:
   host:
     - python >=3.6,<4
     - pip
+    - wheel
+    - setuptools
   run:
+    - python >=3.6,<4
     - flask >=1.0,<3.0
     - pyjwt >=2.0,<3.0
-    - python
-    - six
+    - cryptography >=3.0,<4.0
     - werkzeug >=0.14
 
 test:
   imports:
     - flask_jwt_extended
+   requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/vimalloc/flask-jwt-extended
@@ -43,6 +49,8 @@ about:
   description: |
     A Flask JWT extension that supports refresh tokens, blacklisting/revoking tokens,
     and token freshness (for accessing critical views)
+  dev_url: https://github.com/vimalloc/flask-jwt-extended
+  doc_url: https://github.com/vimalloc/flask-jwt-extended#readme
 
 extra:
   recipe-maintainers:
