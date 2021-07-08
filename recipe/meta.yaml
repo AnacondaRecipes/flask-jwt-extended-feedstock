@@ -34,7 +34,7 @@ requirements:
 test:
   imports:
     - flask_jwt_extended
-   requires:
+  requires:
     - pip
   commands:
     - pip check
