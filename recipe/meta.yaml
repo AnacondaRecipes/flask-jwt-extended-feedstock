@@ -15,17 +15,18 @@ source:
 build:
   noarch: python
   number: 0
+  skip: True  # [py<36]
   script: "{{ PYTHON }} -m pip install . -vv"
 
 
 requirements:
   host:
-    - python >=3.6,<4
+    - python
     - pip
     - wheel
     - setuptools
   run:
-    - python >=3.6,<4
+    - python >=3.6
     - flask >=1.0,<3.0
     - pyjwt >=2.0,<3.0
     - cryptography >=3.0,<4.0
@@ -36,6 +37,7 @@ test:
     - flask_jwt_extended
   requires:
     - pip
+    - python <3.10
   commands:
     - pip check
 
