@@ -1,6 +1,6 @@
 {% set name = "Flask-JWT-Extended" %}
-{% set version = "4.2.3" %}
-{% set sha256 = "22b8ffa7587d50aaf65f3009f1d55ef7287da8260eaf4655a5837e33479216c3" %}
+{% set version = "4.4.3" %}
+{% set sha256 = "a2571df484c5635ad996d364242ec28fc69f386915cd69b1842639712b84c36d" %}
 
 
 package:
@@ -13,23 +13,25 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  noarch: python
+  skip: True  # [py<37]
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 
 requirements:
   host:
-    - python >=3.6,<4
+    - python
     - pip
     - wheel
     - setuptools
   run:
-    - python >=3.6,<4
-    - flask >=1.0,<3.0
+    - python
+    - flask >=2.0,<3.0
     - pyjwt >=2.0,<3.0
-    - cryptography >=3.0,<4.0
+    - typing_extensions >=3.7.4  # [py<38]
     - werkzeug >=0.14
+    # Optional asymmetric crypto
+    - cryptography >=3.3.1
 
 test:
   imports:
