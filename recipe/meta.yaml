@@ -46,7 +46,6 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  license_url: https://github.com/vimalloc/flask-jwt-extended/blob/{{ version }}/LICENSE
   summary: 'A Flask JWT extension'
 
   description: |
@@ -54,7 +53,6 @@ about:
     and token freshness (for accessing critical views)
   dev_url: https://github.com/vimalloc/flask-jwt-extended
   doc_url: https://github.com/vimalloc/flask-jwt-extended#readme
-  doc_source_url: https://github.com/vimalloc/flask-jwt-extended/tree/{{ version }}/docs
 
 extra:
   recipe-maintainers:
