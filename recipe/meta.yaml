@@ -47,7 +47,6 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: 'A Flask JWT extension'
-
   description: |
     A Flask JWT extension that supports refresh tokens, blacklisting/revoking tokens,
     and token freshness (for accessing critical views)
