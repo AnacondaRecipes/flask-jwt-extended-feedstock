@@ -1,22 +1,18 @@
 {% set name = "Flask-JWT-Extended" %}
-{% set version = "4.4.4" %}
-{% set sha256 = "62b521d75494c290a646ae8acc77123721e4364790f1e64af0038d823961fbf0" %}
-
+{% set version = "4.7.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower|replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 8085d6757505b6f3291a2638c84d207e8f0ad0de662d1f46aa2f77e658a0c976
 
 build:
-  skip: True  # [py<37]
+  skip: True  # [py<39]
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
-
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -26,20 +22,33 @@ requirements:
     - setuptools
   run:
     - python
-    - flask >=2.0,<3.0
-    - pyjwt >=2.0,<3.0
-    - typing_extensions >=3.7.4  # [py<38]
     - werkzeug >=0.14
-    # Optional asymmetric crypto
+    - flask >=2.0,<4.0
+    - pyjwt >=2.0,<3.0
+  run_constrained:
     - cryptography >=3.3.1
 
 test:
+  source_files:
+    - tests
   imports:
     - flask_jwt_extended
+    - flask_jwt_extended.config
+    - flask_jwt_extended.default_callbacks
+    - flask_jwt_extended.exceptions
+    - flask_jwt_extended.internal_utils
+    - flask_jwt_extended.tokens
+    - flask_jwt_extended.typing
+    - flask_jwt_extended.utils
   requires:
     - pip
+    - pytest
+    - python-dateutil
+    - cryptography
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v tests
 
 about:
   home: https://github.com/vimalloc/flask-jwt-extended
@@ -48,10 +57,10 @@ about:
   license_file: LICENSE
   summary: 'A Flask JWT extension'
   description: |
-    A Flask JWT extension that supports refresh tokens, blacklisting/revoking tokens,
-    and token freshness (for accessing critical views)
+    Flask-JWT-Extended not only adds support for using JSON Web Tokens (JWT) to Flask for protecting routes,
+    but also many helpful (and optional) features built in to make working with JSON Web Tokens easier.
   dev_url: https://github.com/vimalloc/flask-jwt-extended
-  doc_url: https://github.com/vimalloc/flask-jwt-extended#readme
+  doc_url: https://flask-jwt-extended.readthedocs.io
 
 extra:
   recipe-maintainers:
