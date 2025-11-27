@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower|replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower|replace('-', '_') }}-{{ version }}.tar.gz
   sha256: 8085d6757505b6f3291a2638c84d207e8f0ad0de662d1f46aa2f77e658a0c976
 
 build:
-  skip: True  # [py<39]
-  number: 0
+  skip: true  # [py<39]
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -53,7 +53,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'A Flask JWT extension'
+  summary: A Flask JWT extension
   description: |
     Flask-JWT-Extended not only adds support for using JSON Web Tokens (JWT) to Flask for protecting routes,
     but also many helpful (and optional) features built in to make working with JSON Web Tokens easier.
