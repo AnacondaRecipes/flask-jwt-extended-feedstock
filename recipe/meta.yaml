@@ -23,7 +23,7 @@ requirements:
   run:
     - python
     - werkzeug >=0.14
-    - flask >=2.0,<4.0
+    - flask >=2.3.0,<4.0
     - pyjwt >=2.0,<3.0
     - cryptography >=3.3.1
 
