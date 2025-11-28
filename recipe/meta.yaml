@@ -22,8 +22,13 @@ requirements:
     - setuptools
   run:
     - python
-    - werkzeug >=0.14
-    - flask >=2.3.0,<4.0
+    - werkzeug >=0.14  # [py<314]
+    # An error occurs when using werkzeug <3.0.0 for python 3.14:
+    # ImportError: cannot import name 'url_quote' from 'werkzeug.urls'.
+    # This is fixed in werkzeug 3.0.0+ and flask 3.0.0+.
+    - werkzeug >=3.0.0,<4.0.0  # [py>=314]
+    - flask >=2.0,<4.0  # [py<314]
+    - flask >=3.0,<4.0  # [py>=314]
     - pyjwt >=2.0,<3.0
     - cryptography >=3.3.1
 
