@@ -1,5 +1,5 @@
 {% set name = "Flask-JWT-Extended" %}
-{% set version = "4.7.1" %}
+{% set version = "4.7.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|lower|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 8085d6757505b6f3291a2638c84d207e8f0ad0de662d1f46aa2f77e658a0c976
+  sha256: 78fd0f460317facf3a0084a6457ffaf2f1dda9eefbd576f94cea35b0eadd5531
 
 build:
   skip: true  # [py<39]
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
